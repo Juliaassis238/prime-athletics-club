@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <!--
+    ============================================================
+    PRIME ATHLETICS CLUB — Premium Fitness
+    Projeto desenvolvido por Júlia Ágata de Assis
+    ============================================================
+  -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prime Athletics Club — Elite Fitness Experience</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;0,800;1,700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --black: #050505;
+      --dark: #0f0f0f;
+      --gray-900: #1a1a1a;
+      --gray-800: #252525;
+      --gray-600: #444;
+      --gray-400: #888;
+      --gray-200: #ccc;
+      --orange: #ff4500;
+      --orange-glow: rgba(255,69,0,0.6);
+      --orange-dim: #cc3700;
+      --white: #ffffff;
+      --font-cond: 'Barlow Condensed', sans-serif;
+      --font-body: 'Barlow', sans-serif;
+      --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--black); color: var(--white); overflow-x: hidden; }
+
+    /* NAVBAR */
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      padding: 1.5rem 4rem;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: var(--transition);
+    }
+    .navbar.scrolled {
+      background: rgba(5,5,5,0.95);
+      backdrop-filter: blur(20px);
+      padding: 1rem 4rem;
+      border-bottom: 1px solid rgba(255,69,0,0.15);
+    }
+    .logo {
+      font-family: var(--font-cond);
+      font-size: 1.4rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--white);
+      text-decoration: none;
+    }
+    .logo span { color: var(--orange); }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
+    .nav-links a {
+      font-family: var(--font-cond);
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray-200);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--orange); }
+    .nav-cta {
+      padding: 0.6rem 1.8rem;
+      background: var(--orange);
+      color: var(--white) !important;
+      clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+      transition: var(--transition) !important;
+    }
+    .nav-cta:hover { background: var(--orange-dim) !important; transform: translateY(-2px); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
+    .hamburger span { width: 24px; height: 2px; background: var(--white); display: block; transition: var(--transition); }
+
+    /* HERO */
+    .hero {
+      height: 100vh;
+      position: relative;
+      display: flex; align-items: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1920&q=90');
+      background-size: cover; background-position: center;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(5,5,5,0.92) 0%, rgba(5,5,5,0.6) 60%, rgba(5,5,5,0.3) 100%);
+    }
+    .hero-lines {
+      position: absolute; inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 3px,
+        rgba(255,69,0,0.02) 3px,
+        rgba(255,69,0,0.02) 4px
+      );
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      padding: 0 4rem;
+      max-width: 800px;
+    }
+    .hero-eyebrow {
+      font-family: var(--font-cond);
+      font-size: 0.8rem;
+      letter-spacing: 0.5em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 1rem;
+      opacity: 0; animation: fadeUp 0.6s ease 0.2s forwards;
+    }
+    .hero-title {
+      font-family: var(--font-cond);
+      font-size: clamp(4rem, 10vw, 9rem);
+      font-weight: 800;
+      line-height: 0.9;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+      opacity: 0; animation: fadeUp 0.7s ease 0.4s forwards;
+    }
+    .hero-title .line-orange { color: var(--orange); display: block; }
+    .hero-title .line-outline {
+      -webkit-text-stroke: 2px var(--white);
+      color: transparent;
+      display: block;
+    }
+    .hero-desc {
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--gray-400);
+      line-height: 1.8;
+      max-width: 440px;
+      margin-bottom: 2.5rem;
+      opacity: 0; animation: fadeUp 0.7s ease 0.6s forwards;
+    }
+    .hero-cta-row {
+      display: flex; gap: 1rem; align-items: center;
+      opacity: 0; animation: fadeUp 0.6s ease 0.8s forwards;
+    }
+    .btn-orange {
+      display: inline-block;
+      padding: 1rem 3rem;
+      background: var(--orange);
+      color: var(--white);
+      font-family: var(--font-cond);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+      transition: var(--transition);
+      border: none; cursor: pointer;
+    }
+    .btn-orange:hover { background: var(--orange-dim); transform: translateX(4px); box-shadow: 8px 0 24px var(--orange-glow); }
+    .btn-ghost-orange {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      border: 1px solid var(--orange);
+      color: var(--orange);
+      font-family: var(--font-cond);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    .btn-ghost-orange:hover { background: rgba(255,69,0,0.1); }
+    .hero-ticker {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: var(--orange);
+      padding: 0.7rem 0;
+      overflow: hidden;
+      z-index: 2;
+    }
+    .ticker-inner {
+      display: flex; gap: 4rem;
+      animation: ticker 20s linear infinite;
+      white-space: nowrap;
+    }
+    .ticker-item {
+      font-family: var(--font-cond);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--white);
+      flex-shrink: 0;
+    }
+    .ticker-dot { color: rgba(255,255,255,0.5); margin: 0 1rem; }
+
+    /* SEÇÃO TREINOS */
+    .section-workouts {
+      padding: 7rem 4rem;
+      background: var(--dark);
+    }
+    .workouts-header {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      margin-bottom: 4rem; max-width: 1400px; margin-left: auto; margin-right: auto;
+    }
+    .section-label {
+      font-family: var(--font-cond);
+      font-size: 0.75rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    .section-title {
+      font-family: var(--font-cond);
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 800;
+      text-transform: uppercase;
+      line-height: 1;
+      color: var(--white);
+    }
+    .section-title span { color: var(--orange); }
+    .workouts-grid {
+      max-width: 1400px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+    }
+    .workout-card {
+      position: relative; overflow: hidden;
+    }
+    .workout-img {
+      width: 100%; aspect-ratio: 4/5;
+      object-fit: cover; display: block;
+      transition: transform 0.6s ease;
+      filter: brightness(0.7);
+    }
+    .workout-card:hover .workout-img { transform: scale(1.06); filter: brightness(0.5); }
+    .workout-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(5,5,5,0.95) 0%, transparent 60%);
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 2rem;
+    }
+    .workout-tag {
+      font-family: var(--font-cond);
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 0.5rem;
+    }
+    .workout-card h3 {
+      font-family: var(--font-cond);
+      font-size: 2rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    .workout-card p {
+      font-size: 0.85rem; color: var(--gray-400); line-height: 1.6;
+      opacity: 0; transform: translateY(10px); transition: var(--transition);
+    }
+    .workout-card:hover p { opacity: 1; transform: translateY(0); }
+    .workout-meta {
+      display: flex; gap: 1.5rem; margin-top: 1rem;
+      opacity: 0; transform: translateY(8px); transition: var(--transition) 0.05s;
+    }
+    .workout-card:hover .workout-meta { opacity: 1; transform: translateY(0); }
+    .workout-meta span {
+      font-family: var(--font-cond);
+      font-size: 0.7rem; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--gray-400);
+    }
+    .workout-meta strong { color: var(--orange); }
+
+    /* TRAINERS */
+    .section-trainers {
+      padding: 7rem 4rem;
+      background: var(--black);
+    }
+    .trainers-header { text-align: center; margin-bottom: 4rem; }
+    .trainers-grid {
+      max-width: 1400px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;
+    }
+    .trainer-card {
+      position: relative; overflow: hidden;
+      border: 1px solid var(--gray-800);
+      transition: var(--transition);
+    }
+    .trainer-card:hover {
+      border-color: var(--orange);
+      box-shadow: 0 0 30px rgba(255,69,0,0.2);
+    }
+    .trainer-img {
+      width: 100%; aspect-ratio: 2/3; object-fit: cover;
+      display: block; filter: grayscale(50%); transition: filter 0.4s;
+    }
+    .trainer-card:hover .trainer-img { filter: grayscale(0%); }
+    .trainer-glow {
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: var(--orange);
+      transform: scaleX(0); transition: transform 0.4s ease;
+    }
+    .trainer-card:hover .trainer-glow { transform: scaleX(1); }
+    .trainer-info { padding: 1.5rem; }
+    .trainer-info h3 {
+      font-family: var(--font-cond);
+      font-size: 1.4rem; font-weight: 700;
+      text-transform: uppercase; margin-bottom: 0.2rem;
+    }
+    .trainer-info .role {
+      font-size: 0.7rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--orange);
+    }
+    .trainer-info .exp {
+      font-size: 0.8rem; color: var(--gray-400);
+      margin-top: 0.8rem;
+    }
+
+    /* STATS */
+    .section-stats {
+      padding: 6rem 4rem;
+      background: var(--gray-900);
+      border-top: 1px solid rgba(255,69,0,0.2);
+      border-bottom: 1px solid rgba(255,69,0,0.2);
+    }
+    .stats-inner {
+      max-width: 1400px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      divide-x: 1px solid var(--gray-800);
+    }
+    .stat-item {
+      text-align: center;
+      border-right: 1px solid var(--gray-800);
+      padding: 2rem;
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-num {
+      font-family: var(--font-cond);
+      font-size: 5rem; font-weight: 800;
+      text-transform: uppercase;
+      line-height: 1; display: block;
+      color: var(--white);
+    }
+    .stat-num span { color: var(--orange); }
+    .stat-label {
+      font-family: var(--font-cond);
+      font-size: 0.8rem; letter-spacing: 0.25em;
+      text-transform: uppercase; color: var(--gray-400);
+      margin-top: 0.5rem; display: block;
+    }
+
+    /* PLANOS */
+    .section-plans {
+      padding: 7rem 4rem;
+      background: var(--dark);
+    }
+    .plans-header { text-align: center; margin-bottom: 4rem; }
+    .plans-grid {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+    }
+    .plan-card {
+      background: var(--gray-900);
+      padding: 3rem 2.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition);
+    }
+    .plan-card.featured {
+      background: var(--orange);
+    }
+    .plan-card:hover { transform: translateY(-6px); }
+    .plan-tag {
+      font-family: var(--font-cond);
+      font-size: 0.65rem; letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--orange); margin-bottom: 0.5rem; display: block;
+    }
+    .plan-card.featured .plan-tag { color: rgba(255,255,255,0.7); }
+    .plan-name {
+      font-family: var(--font-cond);
+      font-size: 2rem; font-weight: 800;
+      text-transform: uppercase; margin-bottom: 2rem;
+    }
+    .plan-price {
+      font-family: var(--font-cond);
+      font-size: 4rem; font-weight: 800; line-height: 1;
+    }
+    .plan-price sub { font-size: 1.2rem; font-weight: 400; }
+    .plan-price sup { font-size: 1.5rem; }
+    .plan-period {
+      font-size: 0.75rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gray-400);
+      margin-bottom: 2rem; display: block;
+    }
+    .plan-card.featured .plan-period { color: rgba(255,255,255,0.7); }
+    .plan-features { list-style: none; margin-bottom: 2.5rem; }
+    .plan-features li {
+      font-size: 0.9rem; font-weight: 300;
+      color: var(--gray-200); padding: 0.7rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      display: flex; align-items: center; gap: 0.8rem;
+    }
+    .plan-card.featured .plan-features li { color: rgba(255,255,255,0.9); border-color: rgba(255,255,255,0.15); }
+    .plan-features li::before {
+      content: ''; width: 8px; height: 1px;
+      background: var(--orange); flex-shrink: 0;
+    }
+    .plan-card.featured .plan-features li::before { background: var(--white); }
+
+    /* FOOTER */
+    footer {
+      background: var(--black);
+      border-top: 1px solid rgba(255,69,0,0.2);
+      padding: 5rem 4rem 3rem;
+    }
+    .footer-top {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 4rem; padding-bottom: 3rem;
+      border-bottom: 1px solid var(--gray-800); margin-bottom: 2.5rem;
+    }
+    .footer-brand-desc {
+      font-size: 0.85rem; font-weight: 300;
+      color: var(--gray-400); line-height: 1.8; margin-top: 1.2rem; max-width: 260px;
+    }
+    .footer-col h4 {
+      font-family: var(--font-cond);
+      font-size: 0.7rem; letter-spacing: 0.3em;
+      text-transform: uppercase; color: var(--orange); margin-bottom: 1.5rem;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 0.7rem; }
+    .footer-col li a {
+      font-size: 0.85rem; font-weight: 300;
+      color: var(--gray-400); text-decoration: none; transition: color 0.3s;
+    }
+    .footer-col li a:hover { color: var(--orange); }
+    .footer-bottom {
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .footer-bottom p {
+      font-size: 0.75rem; color: var(--gray-600);
+    }
+    .footer-bottom span { color: var(--orange); }
+
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+    @keyframes ticker {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    .mobile-menu {
+      display: none; position: fixed; inset: 0;
+      background: var(--dark); z-index: 999;
+      flex-direction: column; justify-content: center; align-items: center; gap: 2.5rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: var(--font-cond); font-size: 2.5rem; font-weight: 800;
+      text-transform: uppercase; color: var(--white); text-decoration: none; transition: color 0.3s;
+    }
+    .mobile-menu a:hover { color: var(--orange); }
+    .menu-close-btn { position: absolute; top: 2rem; right: 2rem; background: none; border: none; color: var(--gray-400); font-size: 1.5rem; cursor: pointer; }
+
+    @media (max-width: 1024px) {
+      .navbar { padding: 1.5rem 2rem; }
+      .navbar.scrolled { padding: 1rem 2rem; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .hero-content { padding: 0 2rem; }
+      .section-workouts, .section-trainers, .section-stats, .section-plans, footer { padding-left: 2rem; padding-right: 2rem; }
+      .workouts-grid { grid-template-columns: 1fr 1fr; }
+      .trainers-grid { grid-template-columns: repeat(2, 1fr); }
+      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .plans-grid { grid-template-columns: 1fr; max-width: 480px; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+    @media (max-width: 600px) {
+      .workouts-grid { grid-template-columns: 1fr; }
+      .trainers-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar" id="navbar">
+    <a href="#" class="logo">Prime <span>Athletics</span></a>
+    <ul class="nav-links">
+      <li><a href="#treinos">Treinos</a></li>
+      <li><a href="#trainers">Personal Trainers</a></li>
+      <li><a href="#planos">Planos</a></li>
+      <li><a href="#contato">Contato</a></li>
+      <li><a href="#planos" class="nav-cta">Começar Agora</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="menu-close-btn" id="menuClose">&#x2715;</button>
+    <a href="#treinos" class="menu-link">Treinos</a>
+    <a href="#trainers" class="menu-link">Trainers</a>
+    <a href="#planos" class="menu-link">Planos</a>
+    <a href="#contato" class="menu-link">Contato</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-lines"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Prime Athletics Club — Elite Since 2015</p>
+      <h1 class="hero-title">
+        <span>Forje</span>
+        <span class="line-orange">seu</span>
+        <span class="line-outline">limite</span>
+      </h1>
+      <p class="hero-desc">
+        Não é apenas uma academia. É um sistema de performance projetado para transformar atletas comuns em versões extraordinárias de si mesmos.
+      </p>
+      <div class="hero-cta-row">
+        <a href="#planos" class="btn-orange">Iniciar Jornada</a>
+        <a href="#treinos" class="btn-ghost-orange">Ver Programas</a>
+      </div>
+    </div>
+    <div class="hero-ticker">
+      <div class="ticker-inner" id="ticker">
+        <span class="ticker-item">Musculação Avançada <span class="ticker-dot">|</span></span>
+        <span class="ticker-item">HIIT Premium <span class="ticker-dot">|</span></span>
+        <span class="ticker-item">Cross Training <span class="ticker-dot">|</span></span>
+        <span class="ticker-item">Personal Training <span class="ticker-dot">|</span></span>
+        <span class="ticker-item">Nutrição Esportiva <span class="ticker-dot">|</span></span>
+        <span class="ticker-item">Recovery Zone <span class="ticker-dot">|</span></span>
+        <span class="ticker-item">Musculação Avançada <span class="ticker-dot">|</span></span>
+        <span class="ticker-item">HIIT Premium <span class="ticker-dot">|</span></span>
+        <span class="ticker-item">Cross Training <span class="ticker-dot">|</span></span>
+        <span class="ticker-item">Personal Training <span class="ticker-dot">|</span></span>
+        <span class="ticker-item">Nutrição Esportiva <span class="ticker-dot">|</span></span>
+        <span class="ticker-item">Recovery Zone <span class="ticker-dot">|</span></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- TREINOS -->
+  <section class="section-workouts" id="treinos">
+    <div class="workouts-header">
+      <div>
+        <span class="section-label">Programas Elite</span>
+        <h2 class="section-title">Treinos <span>Sob Medida</span></h2>
+      </div>
+      <a href="#planos" class="btn-orange">Ver Todos</a>
+    </div>
+    <div class="workouts-grid">
+      <div class="workout-card reveal">
+        <img class="workout-img" src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80" alt="Musculação" />
+        <div class="workout-overlay">
+          <div class="workout-tag">Força</div>
+          <h3>Hypertrophy Pro</h3>
+          <p>Programa de hipertrofia avançado com periodização ondulatória e foco em recrutamento máximo de fibras.</p>
+          <div class="workout-meta">
+            <span>Duração: <strong>60 min</strong></span>
+            <span>Nível: <strong>Avançado</strong></span>
+          </div>
+        </div>
+      </div>
+      <div class="workout-card reveal reveal-delay-1">
+        <img class="workout-img" src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&q=80" alt="HIIT" />
+        <div class="workout-overlay">
+          <div class="workout-tag">Cardio</div>
+          <h3>HIIT Storm</h3>
+          <p>Intervalos de alta intensidade calibrados por algoritmo para queima calórica máxima em tempo mínimo.</p>
+          <div class="workout-meta">
+            <span>Duração: <strong>45 min</strong></span>
+            <span>Nível: <strong>Intermediário</strong></span>
+          </div>
+        </div>
+      </div>
+      <div class="workout-card reveal reveal-delay-2">
+        <img class="workout-img" src="https://images.unsplash.com/photo-1549060279-7e168fcee0c2?w=600&q=80" alt="Cross Training" />
+        <div class="workout-overlay">
+          <div class="workout-tag">Performance</div>
+          <h3>CrossEdge Elite</h3>
+          <p>Modalidade funcional de alta performance que combina força, resistência e agilidade em circuitos dinâmicos.</p>
+          <div class="workout-meta">
+            <span>Duração: <strong>50 min</strong></span>
+            <span>Nível: <strong>Elite</strong></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRAINERS -->
+  <section class="section-trainers" id="trainers">
+    <div class="trainers-header">
+      <span class="section-label">Nossa Equipe</span>
+      <h2 class="section-title">Personal <span>Trainers</span></h2>
+    </div>
+    <div class="trainers-grid">
+      <div class="trainer-card reveal">
+        <div class="trainer-glow"></div>
+        <img class="trainer-img" src="https://images.unsplash.com/photo-1567013127542-490d757e51cd?w=400&q=85" alt="Trainer" />
+        <div class="trainer-info">
+          <h3>Bruno Assis</h3>
+          <div class="role">Especialista em Força</div>
+          <div class="exp">12 anos de experiência · CREF 09876</div>
+        </div>
+      </div>
+      <div class="trainer-card reveal reveal-delay-1">
+        <div class="trainer-glow"></div>
+        <img class="trainer-img" src="https://images.unsplash.com/photo-1611672585731-fa10603fb9e0?w=400&q=85" alt="Trainer" />
+        <div class="trainer-info">
+          <h3>Carla Mendes</h3>
+          <div class="role">HIIT & Funcional</div>
+          <div class="exp">8 anos de experiência · CREF 14532</div>
+        </div>
+      </div>
+      <div class="trainer-card reveal reveal-delay-2">
+        <div class="trainer-glow"></div>
+        <img class="trainer-img" src="https://images.unsplash.com/photo-1590487988256-9ed24133863e?w=400&q=85" alt="Trainer" />
+        <div class="trainer-info">
+          <h3>Diego Lima</h3>
+          <div class="role">CrossFit Coach</div>
+          <div class="exp">10 anos de experiência · CREF 22167</div>
+        </div>
+      </div>
+      <div class="trainer-card reveal reveal-delay-3">
+        <div class="trainer-glow"></div>
+        <img class="trainer-img" src="https://images.unsplash.com/photo-1571731956672-f2b94d7dd0cb?w=400&q=85" alt="Trainer" />
+        <div class="trainer-info">
+          <h3>Fernanda Cruz</h3>
+          <div class="role">Nutrição & Performance</div>
+          <div class="exp">7 anos de experiência · CRN 18943</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="section-stats">
+    <div class="stats-inner">
+      <div class="stat-item reveal">
+        <span class="stat-num" data-target="3200">0<span>+</span></span>
+        <span class="stat-label">Alunos Ativos</span>
+      </div>
+      <div class="stat-item reveal reveal-delay-1">
+        <span class="stat-num" data-target="18">0<span></span></span>
+        <span class="stat-label">Personal Trainers</span>
+      </div>
+      <div class="stat-item reveal reveal-delay-2">
+        <span class="stat-num" data-target="9">0<span></span></span>
+        <span class="stat-label">Anos de Excelência</span>
+      </div>
+      <div class="stat-item reveal reveal-delay-3">
+        <span class="stat-num" data-target="97">0<span>%</span></span>
+        <span class="stat-label">Taxa de Resultado</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLANOS -->
+  <section class="section-plans" id="planos">
+    <div class="plans-header">
+      <span class="section-label">Invista em Você</span>
+      <h2 class="section-title">Planos <span>Premium</span></h2>
+    </div>
+    <div class="plans-grid">
+      <div class="plan-card reveal">
+        <span class="plan-tag">Iniciante</span>
+        <div class="plan-name">Core</div>
+        <div class="plan-price"><sup>R$</sup>189<sub>/mês</sub></div>
+        <span class="plan-period">Acesso mensal</span>
+        <ul class="plan-features">
+          <li>Acesso à área de musculação</li>
+          <li>Avaliação física inicial</li>
+          <li>App de treinos</li>
+          <li>Vestiários premium</li>
+          <li>Horário: 6h às 22h</li>
+        </ul>
+        <a href="#" class="btn-ghost-orange" style="display:block; text-align:center;">Escolher Plano</a>
+      </div>
+      <div class="plan-card featured reveal reveal-delay-1">
+        <span class="plan-tag">Mais Popular</span>
+        <div class="plan-name">Performance</div>
+        <div class="plan-price" style="color:var(--white);"><sup>R$</sup>389<sub>/mês</sub></div>
+        <span class="plan-period">Acesso mensal</span>
+        <ul class="plan-features">
+          <li>Tudo do plano Core</li>
+          <li>4 sessões de Personal/mês</li>
+          <li>Aulas coletivas ilimitadas</li>
+          <li>Consulta nutricional</li>
+          <li>Área de recovery</li>
+        </ul>
+        <a href="#" class="btn-orange" style="display:block; text-align:center; background:var(--dark); color:var(--white);">Escolher Plano</a>
+      </div>
+      <div class="plan-card reveal reveal-delay-2">
+        <span class="plan-tag">Elite</span>
+        <div class="plan-name">Black</div>
+        <div class="plan-price"><sup>R$</sup>689<sub>/mês</sub></div>
+        <span class="plan-period">Acesso mensal</span>
+        <ul class="plan-features">
+          <li>Tudo do plano Performance</li>
+          <li>Personal training ilimitado</li>
+          <li>Nutricionista exclusivo</li>
+          <li>Spa e sauna premium</li>
+          <li>Acesso 24h/7 dias</li>
+        </ul>
+        <a href="#" class="btn-ghost-orange" style="display:block; text-align:center;">Escolher Plano</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="contato">
+    <div class="footer-top">
+      <div>
+        <a href="#" class="logo">Prime <span>Athletics</span></a>
+        <p class="footer-brand-desc">O clube de fitness premium onde performance encontra excelência. Transforme seu corpo, eleve seu padrão.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Modalidades</h4>
+        <ul>
+          <li><a href="#">Musculação</a></li>
+          <li><a href="#">HIIT</a></li>
+          <li><a href="#">CrossTraining</a></li>
+          <li><a href="#">Personal</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Clube</h4>
+        <ul>
+          <li><a href="#">Sobre Nós</a></li>
+          <li><a href="#">Equipe</a></li>
+          <li><a href="#">Infraestrutura</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <ul>
+          <li><a href="#">Rua das Esportistas, 800</a></li>
+          <li><a href="#">(11) 3200-5500</a></li>
+          <li><a href="#">info@primeathletics.com.br</a></li>
+          <li><a href="#">Seg-Dom: 5h30 às 23h</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 Prime Athletics Club. Todos os direitos reservados.</p>
+      <p>Projeto desenvolvido por <span>Júlia Ágata de Assis</span></p>
+    </div>
+  </footer>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 60));
+
+    document.getElementById('hamburger').addEventListener('click', () => document.getElementById('mobileMenu').classList.add('open'));
+    document.getElementById('menuClose').addEventListener('click', () => document.getElementById('mobileMenu').classList.remove('open'));
+    document.querySelectorAll('.menu-link').forEach(l => l.addEventListener('click', () => document.getElementById('mobileMenu').classList.remove('open')));
+
+    const obs = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }), { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+    // Parallax hero
+    window.addEventListener('scroll', () => {
+      document.querySelector('.hero-bg').style.transform = `translateY(${window.scrollY * 0.4}px)`;
+    });
+  </script>
+</body>
+</html>
