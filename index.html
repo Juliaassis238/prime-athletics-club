@@ -17,6 +17,9 @@
   img { opacity: 0; transition: opacity 0.5s ease-in; }
   img.loaded { opacity: 1; }
 
+  img { opacity: 0; transition: opacity 0.5s ease-in; }
+  img.loaded { opacity: 1; }
+
     :root {
       --black: #050505;
       --dark: #0f0f0f;
@@ -790,6 +793,19 @@
       document.querySelector('.hero-bg').style.transform = `translateY(${window.scrollY * 0.4}px)`;
     });
   </script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const images = document.querySelectorAll('img');
+  images.forEach(img => {
+    if (img.complete) {
+      img.classList.add('loaded');
+    } else {
+      img.addEventListener('load', () => img.classList.add('loaded'));
+    }
+  });
+});
+</script>
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
