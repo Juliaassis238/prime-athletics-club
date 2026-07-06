@@ -14,6 +14,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;0,800;1,700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
 
   <style>
+  img { opacity: 0; transition: opacity 0.5s ease-in; }
+  img.loaded { opacity: 1; }
+
     :root {
       --black: #050505;
       --dark: #0f0f0f;
@@ -572,7 +575,7 @@
     </div>
     <div class="workouts-grid">
       <div class="workout-card reveal">
-        <img class="workout-img" src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80" alt="Musculação" />
+        <img decoding="async" fetchpriority="high" class="workout-img" src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80" alt="Musculação" />
         <div class="workout-overlay">
           <div class="workout-tag">Força</div>
           <h3>Hypertrophy Pro</h3>
@@ -584,7 +587,7 @@
         </div>
       </div>
       <div class="workout-card reveal reveal-delay-1">
-        <img class="workout-img" src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&q=80" alt="HIIT" />
+        <img decoding="async" fetchpriority="high" class="workout-img" src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&q=80" alt="HIIT" />
         <div class="workout-overlay">
           <div class="workout-tag">Cardio</div>
           <h3>HIIT Storm</h3>
@@ -596,7 +599,7 @@
         </div>
       </div>
       <div class="workout-card reveal reveal-delay-2">
-        <img class="workout-img" src="https://images.unsplash.com/photo-1549060279-7e168fcee0c2?w=600&q=80" alt="Cross Training" />
+        <img decoding="async" loading="lazy" class="workout-img" src="https://images.unsplash.com/photo-1549060279-7e168fcee0c2?w=600&q=80" alt="Cross Training" />
         <div class="workout-overlay">
           <div class="workout-tag">Performance</div>
           <h3>CrossEdge Elite</h3>
@@ -619,7 +622,7 @@
     <div class="trainers-grid">
       <div class="trainer-card reveal">
         <div class="trainer-glow"></div>
-        <img class="trainer-img" src="https://images.unsplash.com/photo-1567013127542-490d757e51cd?w=400&q=85" alt="Trainer" />
+        <img decoding="async" loading="lazy" class="trainer-img" src="https://images.unsplash.com/photo-1567013127542-490d757e51cd?w=400&q=85" alt="Trainer" />
         <div class="trainer-info">
           <h3>Bruno Assis</h3>
           <div class="role">Especialista em Força</div>
@@ -628,7 +631,7 @@
       </div>
       <div class="trainer-card reveal reveal-delay-1">
         <div class="trainer-glow"></div>
-        <img class="trainer-img" src="https://images.unsplash.com/photo-1611672585731-fa10603fb9e0?w=400&q=85" alt="Trainer" />
+        <img decoding="async" loading="lazy" class="trainer-img" src="https://images.unsplash.com/photo-1611672585731-fa10603fb9e0?w=400&q=85" alt="Trainer" />
         <div class="trainer-info">
           <h3>Carla Mendes</h3>
           <div class="role">HIIT & Funcional</div>
@@ -637,7 +640,7 @@
       </div>
       <div class="trainer-card reveal reveal-delay-2">
         <div class="trainer-glow"></div>
-        <img class="trainer-img" src="https://images.unsplash.com/photo-1590487988256-9ed24133863e?w=400&q=85" alt="Trainer" />
+        <img decoding="async" loading="lazy" class="trainer-img" src="https://images.unsplash.com/photo-1590487988256-9ed24133863e?w=400&q=85" alt="Trainer" />
         <div class="trainer-info">
           <h3>Diego Lima</h3>
           <div class="role">CrossFit Coach</div>
@@ -646,7 +649,7 @@
       </div>
       <div class="trainer-card reveal reveal-delay-3">
         <div class="trainer-glow"></div>
-        <img class="trainer-img" src="https://images.unsplash.com/photo-1571731956672-f2b94d7dd0cb?w=400&q=85" alt="Trainer" />
+        <img decoding="async" loading="lazy" class="trainer-img" src="https://images.unsplash.com/photo-1571731956672-f2b94d7dd0cb?w=400&q=85" alt="Trainer" />
         <div class="trainer-info">
           <h3>Fernanda Cruz</h3>
           <div class="role">Nutrição & Performance</div>
@@ -787,5 +790,18 @@
       document.querySelector('.hero-bg').style.transform = `translateY(${window.scrollY * 0.4}px)`;
     });
   </script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const images = document.querySelectorAll('img');
+  images.forEach(img => {
+    if (img.complete) {
+      img.classList.add('loaded');
+    } else {
+      img.addEventListener('load', () => img.classList.add('loaded'));
+    }
+  });
+});
+</script>
 </body>
 </html>
