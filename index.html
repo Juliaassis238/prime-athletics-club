@@ -1,19 +1,19 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
-<head>
-  <!--
+<head><link as_="image" href="athletic_training_1.webp" rel="preload"/>
+<!--
     ============================================================
     PRIME ATHLETICS CLUB — Premium Fitness
     Projeto desenvolvido por Júlia Ágata de Assis
     ============================================================
   -->
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Prime Athletics Club — Elite Fitness Experience</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;0,800;1,700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
-
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Prime Athletics Club — Elite Fitness Experience</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;0,800;1,700&amp;family=Barlow:wght@300;400;500&amp;display=swap" rel="stylesheet"/>
+<style>
   img { opacity: 0; transition: opacity 0.5s ease-in; }
   img.loaded { opacity: 1; }
 
@@ -517,276 +517,267 @@
   </style>
 </head>
 <body>
-
-  <nav class="navbar" id="navbar">
-    <a href="#" class="logo">Prime <span>Athletics</span></a>
-    <ul class="nav-links">
-      <li><a href="#treinos">Treinos</a></li>
-      <li><a href="#trainers">Personal Trainers</a></li>
-      <li><a href="#planos">Planos</a></li>
-      <li><a href="#contato">Contato</a></li>
-      <li><a href="#planos" class="nav-cta">Começar Agora</a></li>
-    </ul>
-    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
-  </nav>
-
-  <div class="mobile-menu" id="mobileMenu">
-    <button class="menu-close-btn" id="menuClose">&#x2715;</button>
-    <a href="#treinos" class="menu-link">Treinos</a>
-    <a href="#trainers" class="menu-link">Trainers</a>
-    <a href="#planos" class="menu-link">Planos</a>
-    <a href="#contato" class="menu-link">Contato</a>
-  </div>
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-overlay"></div>
-    <div class="hero-lines"></div>
-    <div class="hero-content">
-      <p class="hero-eyebrow">Prime Athletics Club — Elite Since 2015</p>
-      <h1 class="hero-title">
-        <span>Forje</span>
-        <span class="line-orange">seu</span>
-        <span class="line-outline">limite</span>
-      </h1>
-      <p class="hero-desc">
+<nav class="navbar" id="navbar">
+<a class="logo" href="#">Prime <span>Athletics</span></a>
+<ul class="nav-links">
+<li><a href="#treinos">Treinos</a></li>
+<li><a href="#trainers">Personal Trainers</a></li>
+<li><a href="#planos">Planos</a></li>
+<li><a href="#contato">Contato</a></li>
+<li><a class="nav-cta" href="#planos">Começar Agora</a></li>
+</ul>
+<button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+<button class="menu-close-btn" id="menuClose">✕</button>
+<a class="menu-link" href="#treinos">Treinos</a>
+<a class="menu-link" href="#trainers">Trainers</a>
+<a class="menu-link" href="#planos">Planos</a>
+<a class="menu-link" href="#contato">Contato</a>
+</div>
+<!-- HERO -->
+<section class="hero">
+<div class="hero-bg"></div>
+<div class="hero-overlay"></div>
+<div class="hero-lines"></div>
+<div class="hero-content">
+<p class="hero-eyebrow">Prime Athletics Club — Elite Since 2015</p>
+<h1 class="hero-title">
+<span>Forje</span>
+<span class="line-orange">seu</span>
+<span class="line-outline">limite</span>
+</h1>
+<p class="hero-desc">
         Não é apenas uma academia. É um sistema de performance projetado para transformar atletas comuns em versões extraordinárias de si mesmos.
       </p>
-      <div class="hero-cta-row">
-        <a href="#planos" class="btn-orange">Iniciar Jornada</a>
-        <a href="#treinos" class="btn-ghost-orange">Ver Programas</a>
-      </div>
-    </div>
-    <div class="hero-ticker">
-      <div class="ticker-inner" id="ticker">
-        <span class="ticker-item">Musculação Avançada <span class="ticker-dot">|</span></span>
-        <span class="ticker-item">HIIT Premium <span class="ticker-dot">|</span></span>
-        <span class="ticker-item">Cross Training <span class="ticker-dot">|</span></span>
-        <span class="ticker-item">Personal Training <span class="ticker-dot">|</span></span>
-        <span class="ticker-item">Nutrição Esportiva <span class="ticker-dot">|</span></span>
-        <span class="ticker-item">Recovery Zone <span class="ticker-dot">|</span></span>
-        <span class="ticker-item">Musculação Avançada <span class="ticker-dot">|</span></span>
-        <span class="ticker-item">HIIT Premium <span class="ticker-dot">|</span></span>
-        <span class="ticker-item">Cross Training <span class="ticker-dot">|</span></span>
-        <span class="ticker-item">Personal Training <span class="ticker-dot">|</span></span>
-        <span class="ticker-item">Nutrição Esportiva <span class="ticker-dot">|</span></span>
-        <span class="ticker-item">Recovery Zone <span class="ticker-dot">|</span></span>
-      </div>
-    </div>
-  </section>
-
-  <!-- TREINOS -->
-  <section class="section-workouts" id="treinos">
-    <div class="workouts-header">
-      <div>
-        <span class="section-label">Programas Elite</span>
-        <h2 class="section-title">Treinos <span>Sob Medida</span></h2>
-      </div>
-      <a href="#planos" class="btn-orange">Ver Todos</a>
-    </div>
-    <div class="workouts-grid">
-      <div class="workout-card reveal">
-        <img decoding="async" fetchpriority="high" class="workout-img" src="athletic_training_1.webp" alt="Musculação" />
-        <div class="workout-overlay">
-          <div class="workout-tag">Força</div>
-          <h3>Hypertrophy Pro</h3>
-          <p>Programa de hipertrofia avançado com periodização ondulatória e foco em recrutamento máximo de fibras.</p>
-          <div class="workout-meta">
-            <span>Duração: <strong>60 min</strong></span>
-            <span>Nível: <strong>Avançado</strong></span>
-          </div>
-        </div>
-      </div>
-      <div class="workout-card reveal reveal-delay-1">
-        <img decoding="async" fetchpriority="high" class="workout-img" src="athletic_training_2.webp" alt="HIIT" />
-        <div class="workout-overlay">
-          <div class="workout-tag">Cardio</div>
-          <h3>HIIT Storm</h3>
-          <p>Intervalos de alta intensidade calibrados por algoritmo para queima calórica máxima em tempo mínimo.</p>
-          <div class="workout-meta">
-            <span>Duração: <strong>45 min</strong></span>
-            <span>Nível: <strong>Intermediário</strong></span>
-          </div>
-        </div>
-      </div>
-      <div class="workout-card reveal reveal-delay-2">
-        <img decoding="async" loading="lazy" class="workout-img" src="athletic_training_3.webp" alt="Cross Training" />
-        <div class="workout-overlay">
-          <div class="workout-tag">Performance</div>
-          <h3>CrossEdge Elite</h3>
-          <p>Modalidade funcional de alta performance que combina força, resistência e agilidade em circuitos dinâmicos.</p>
-          <div class="workout-meta">
-            <span>Duração: <strong>50 min</strong></span>
-            <span>Nível: <strong>Elite</strong></span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TRAINERS -->
-  <section class="section-trainers" id="trainers">
-    <div class="trainers-header">
-      <span class="section-label">Nossa Equipe</span>
-      <h2 class="section-title">Personal <span>Trainers</span></h2>
-    </div>
-    <div class="trainers-grid">
-      <div class="trainer-card reveal">
-        <div class="trainer-glow"></div>
-        <img decoding="async" loading="lazy" class="trainer-img" src="trainer_1.webp" alt="Trainer" />
-        <div class="trainer-info">
-          <h3>Bruno Assis</h3>
-          <div class="role">Especialista em Força</div>
-          <div class="exp">12 anos de experiência · CREF 09876</div>
-        </div>
-      </div>
-      <div class="trainer-card reveal reveal-delay-1">
-        <div class="trainer-glow"></div>
-        <img decoding="async" loading="lazy" class="trainer-img" src="trainer_2.webp" alt="Trainer" />
-        <div class="trainer-info">
-          <h3>Carla Mendes</h3>
-          <div class="role">HIIT & Funcional</div>
-          <div class="exp">8 anos de experiência · CREF 14532</div>
-        </div>
-      </div>
-      <div class="trainer-card reveal reveal-delay-2">
-        <div class="trainer-glow"></div>
-        <img decoding="async" loading="lazy" class="trainer-img" src="trainer_3.webp" alt="Trainer" />
-        <div class="trainer-info">
-          <h3>Diego Lima</h3>
-          <div class="role">CrossFit Coach</div>
-          <div class="exp">10 anos de experiência · CREF 22167</div>
-        </div>
-      </div>
-      <div class="trainer-card reveal reveal-delay-3">
-        <div class="trainer-glow"></div>
-        <img decoding="async" loading="lazy" class="trainer-img" src="trainer_4.webp" alt="Trainer" />
-        <div class="trainer-info">
-          <h3>Fernanda Cruz</h3>
-          <div class="role">Nutrição & Performance</div>
-          <div class="exp">7 anos de experiência · CRN 18943</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- STATS -->
-  <section class="section-stats">
-    <div class="stats-inner">
-      <div class="stat-item reveal">
-        <span class="stat-num" data-target="3200">0<span>+</span></span>
-        <span class="stat-label">Alunos Ativos</span>
-      </div>
-      <div class="stat-item reveal reveal-delay-1">
-        <span class="stat-num" data-target="18">0<span></span></span>
-        <span class="stat-label">Personal Trainers</span>
-      </div>
-      <div class="stat-item reveal reveal-delay-2">
-        <span class="stat-num" data-target="9">0<span></span></span>
-        <span class="stat-label">Anos de Excelência</span>
-      </div>
-      <div class="stat-item reveal reveal-delay-3">
-        <span class="stat-num" data-target="97">0<span>%</span></span>
-        <span class="stat-label">Taxa de Resultado</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- PLANOS -->
-  <section class="section-plans" id="planos">
-    <div class="plans-header">
-      <span class="section-label">Invista em Você</span>
-      <h2 class="section-title">Planos <span>Premium</span></h2>
-    </div>
-    <div class="plans-grid">
-      <div class="plan-card reveal">
-        <span class="plan-tag">Iniciante</span>
-        <div class="plan-name">Core</div>
-        <div class="plan-price"><sup>R$</sup>189<sub>/mês</sub></div>
-        <span class="plan-period">Acesso mensal</span>
-        <ul class="plan-features">
-          <li>Acesso à área de musculação</li>
-          <li>Avaliação física inicial</li>
-          <li>App de treinos</li>
-          <li>Vestiários premium</li>
-          <li>Horário: 6h às 22h</li>
-        </ul>
-        <a href="#" class="btn-ghost-orange" style="display:block; text-align:center;">Escolher Plano</a>
-      </div>
-      <div class="plan-card featured reveal reveal-delay-1">
-        <span class="plan-tag">Mais Popular</span>
-        <div class="plan-name">Performance</div>
-        <div class="plan-price" style="color:var(--white);"><sup>R$</sup>389<sub>/mês</sub></div>
-        <span class="plan-period">Acesso mensal</span>
-        <ul class="plan-features">
-          <li>Tudo do plano Core</li>
-          <li>4 sessões de Personal/mês</li>
-          <li>Aulas coletivas ilimitadas</li>
-          <li>Consulta nutricional</li>
-          <li>Área de recovery</li>
-        </ul>
-        <a href="#" class="btn-orange" style="display:block; text-align:center; background:var(--dark); color:var(--white);">Escolher Plano</a>
-      </div>
-      <div class="plan-card reveal reveal-delay-2">
-        <span class="plan-tag">Elite</span>
-        <div class="plan-name">Black</div>
-        <div class="plan-price"><sup>R$</sup>689<sub>/mês</sub></div>
-        <span class="plan-period">Acesso mensal</span>
-        <ul class="plan-features">
-          <li>Tudo do plano Performance</li>
-          <li>Personal training ilimitado</li>
-          <li>Nutricionista exclusivo</li>
-          <li>Spa e sauna premium</li>
-          <li>Acesso 24h/7 dias</li>
-        </ul>
-        <a href="#" class="btn-ghost-orange" style="display:block; text-align:center;">Escolher Plano</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer id="contato">
-    <div class="footer-top">
-      <div>
-        <a href="#" class="logo">Prime <span>Athletics</span></a>
-        <p class="footer-brand-desc">O clube de fitness premium onde performance encontra excelência. Transforme seu corpo, eleve seu padrão.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Modalidades</h4>
-        <ul>
-          <li><a href="#">Musculação</a></li>
-          <li><a href="#">HIIT</a></li>
-          <li><a href="#">CrossTraining</a></li>
-          <li><a href="#">Personal</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Clube</h4>
-        <ul>
-          <li><a href="#">Sobre Nós</a></li>
-          <li><a href="#">Equipe</a></li>
-          <li><a href="#">Infraestrutura</a></li>
-          <li><a href="#">Blog</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Contato</h4>
-        <ul>
-          <li><a href="#">Rua das Esportistas, 800</a></li>
-          <li><a href="#">(11) 3200-5500</a></li>
-          <li><a href="#">info@primeathletics.com.br</a></li>
-          <li><a href="#">Seg-Dom: 5h30 às 23h</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2024 Prime Athletics Club. Todos os direitos reservados.</p>
-      <p>Projeto desenvolvido por <span>Júlia Ágata de Assis</span></p>
-    </div>
-  </footer>
-
-  <script>
+<div class="hero-cta-row">
+<a class="btn-orange" href="#planos">Iniciar Jornada</a>
+<a class="btn-ghost-orange" href="#treinos">Ver Programas</a>
+</div>
+</div>
+<div class="hero-ticker">
+<div class="ticker-inner" id="ticker">
+<span class="ticker-item">Musculação Avançada <span class="ticker-dot">|</span></span>
+<span class="ticker-item">HIIT Premium <span class="ticker-dot">|</span></span>
+<span class="ticker-item">Cross Training <span class="ticker-dot">|</span></span>
+<span class="ticker-item">Personal Training <span class="ticker-dot">|</span></span>
+<span class="ticker-item">Nutrição Esportiva <span class="ticker-dot">|</span></span>
+<span class="ticker-item">Recovery Zone <span class="ticker-dot">|</span></span>
+<span class="ticker-item">Musculação Avançada <span class="ticker-dot">|</span></span>
+<span class="ticker-item">HIIT Premium <span class="ticker-dot">|</span></span>
+<span class="ticker-item">Cross Training <span class="ticker-dot">|</span></span>
+<span class="ticker-item">Personal Training <span class="ticker-dot">|</span></span>
+<span class="ticker-item">Nutrição Esportiva <span class="ticker-dot">|</span></span>
+<span class="ticker-item">Recovery Zone <span class="ticker-dot">|</span></span>
+</div>
+</div>
+</section>
+<!-- TREINOS -->
+<section class="section-workouts" id="treinos">
+<div class="workouts-header">
+<div>
+<span class="section-label">Programas Elite</span>
+<h2 class="section-title">Treinos <span>Sob Medida</span></h2>
+</div>
+<a class="btn-orange" href="#planos">Ver Todos</a>
+</div>
+<div class="workouts-grid">
+<div class="workout-card reveal">
+<img alt="Musculação" class="workout-img" decoding="async" fetchpriority="high" loading="eager" src="athletic_training_1.webp"/>
+<div class="workout-overlay">
+<div class="workout-tag">Força</div>
+<h3>Hypertrophy Pro</h3>
+<p>Programa de hipertrofia avançado com periodização ondulatória e foco em recrutamento máximo de fibras.</p>
+<div class="workout-meta">
+<span>Duração: <strong>60 min</strong></span>
+<span>Nível: <strong>Avançado</strong></span>
+</div>
+</div>
+</div>
+<div class="workout-card reveal reveal-delay-1">
+<img alt="HIIT" class="workout-img" decoding="async" fetchpriority="high" loading="lazy" src="athletic_training_2.webp"/>
+<div class="workout-overlay">
+<div class="workout-tag">Cardio</div>
+<h3>HIIT Storm</h3>
+<p>Intervalos de alta intensidade calibrados por algoritmo para queima calórica máxima em tempo mínimo.</p>
+<div class="workout-meta">
+<span>Duração: <strong>45 min</strong></span>
+<span>Nível: <strong>Intermediário</strong></span>
+</div>
+</div>
+</div>
+<div class="workout-card reveal reveal-delay-2">
+<img alt="Cross Training" class="workout-img" decoding="async" loading="lazy" src="athletic_training_3.webp"/>
+<div class="workout-overlay">
+<div class="workout-tag">Performance</div>
+<h3>CrossEdge Elite</h3>
+<p>Modalidade funcional de alta performance que combina força, resistência e agilidade em circuitos dinâmicos.</p>
+<div class="workout-meta">
+<span>Duração: <strong>50 min</strong></span>
+<span>Nível: <strong>Elite</strong></span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- TRAINERS -->
+<section class="section-trainers" id="trainers">
+<div class="trainers-header">
+<span class="section-label">Nossa Equipe</span>
+<h2 class="section-title">Personal <span>Trainers</span></h2>
+</div>
+<div class="trainers-grid">
+<div class="trainer-card reveal">
+<div class="trainer-glow"></div>
+<img alt="Trainer" class="trainer-img" decoding="async" loading="lazy" src="trainer_1.webp"/>
+<div class="trainer-info">
+<h3>Bruno Assis</h3>
+<div class="role">Especialista em Força</div>
+<div class="exp">12 anos de experiência · CREF 09876</div>
+</div>
+</div>
+<div class="trainer-card reveal reveal-delay-1">
+<div class="trainer-glow"></div>
+<img alt="Trainer" class="trainer-img" decoding="async" loading="lazy" src="trainer_2.webp"/>
+<div class="trainer-info">
+<h3>Carla Mendes</h3>
+<div class="role">HIIT &amp; Funcional</div>
+<div class="exp">8 anos de experiência · CREF 14532</div>
+</div>
+</div>
+<div class="trainer-card reveal reveal-delay-2">
+<div class="trainer-glow"></div>
+<img alt="Trainer" class="trainer-img" decoding="async" loading="lazy" src="trainer_3.webp"/>
+<div class="trainer-info">
+<h3>Diego Lima</h3>
+<div class="role">CrossFit Coach</div>
+<div class="exp">10 anos de experiência · CREF 22167</div>
+</div>
+</div>
+<div class="trainer-card reveal reveal-delay-3">
+<div class="trainer-glow"></div>
+<img alt="Trainer" class="trainer-img" decoding="async" loading="lazy" src="trainer_4.webp"/>
+<div class="trainer-info">
+<h3>Fernanda Cruz</h3>
+<div class="role">Nutrição &amp; Performance</div>
+<div class="exp">7 anos de experiência · CRN 18943</div>
+</div>
+</div>
+</div>
+</section>
+<!-- STATS -->
+<section class="section-stats">
+<div class="stats-inner">
+<div class="stat-item reveal">
+<span class="stat-num" data-target="3200">0<span>+</span></span>
+<span class="stat-label">Alunos Ativos</span>
+</div>
+<div class="stat-item reveal reveal-delay-1">
+<span class="stat-num" data-target="18">0<span></span></span>
+<span class="stat-label">Personal Trainers</span>
+</div>
+<div class="stat-item reveal reveal-delay-2">
+<span class="stat-num" data-target="9">0<span></span></span>
+<span class="stat-label">Anos de Excelência</span>
+</div>
+<div class="stat-item reveal reveal-delay-3">
+<span class="stat-num" data-target="97">0<span>%</span></span>
+<span class="stat-label">Taxa de Resultado</span>
+</div>
+</div>
+</section>
+<!-- PLANOS -->
+<section class="section-plans" id="planos">
+<div class="plans-header">
+<span class="section-label">Invista em Você</span>
+<h2 class="section-title">Planos <span>Premium</span></h2>
+</div>
+<div class="plans-grid">
+<div class="plan-card reveal">
+<span class="plan-tag">Iniciante</span>
+<div class="plan-name">Core</div>
+<div class="plan-price"><sup>R$</sup>189<sub>/mês</sub></div>
+<span class="plan-period">Acesso mensal</span>
+<ul class="plan-features">
+<li>Acesso à área de musculação</li>
+<li>Avaliação física inicial</li>
+<li>App de treinos</li>
+<li>Vestiários premium</li>
+<li>Horário: 6h às 22h</li>
+</ul>
+<a class="btn-ghost-orange" href="#" style="display:block; text-align:center;">Escolher Plano</a>
+</div>
+<div class="plan-card featured reveal reveal-delay-1">
+<span class="plan-tag">Mais Popular</span>
+<div class="plan-name">Performance</div>
+<div class="plan-price" style="color:var(--white);"><sup>R$</sup>389<sub>/mês</sub></div>
+<span class="plan-period">Acesso mensal</span>
+<ul class="plan-features">
+<li>Tudo do plano Core</li>
+<li>4 sessões de Personal/mês</li>
+<li>Aulas coletivas ilimitadas</li>
+<li>Consulta nutricional</li>
+<li>Área de recovery</li>
+</ul>
+<a class="btn-orange" href="#" style="display:block; text-align:center; background:var(--dark); color:var(--white);">Escolher Plano</a>
+</div>
+<div class="plan-card reveal reveal-delay-2">
+<span class="plan-tag">Elite</span>
+<div class="plan-name">Black</div>
+<div class="plan-price"><sup>R$</sup>689<sub>/mês</sub></div>
+<span class="plan-period">Acesso mensal</span>
+<ul class="plan-features">
+<li>Tudo do plano Performance</li>
+<li>Personal training ilimitado</li>
+<li>Nutricionista exclusivo</li>
+<li>Spa e sauna premium</li>
+<li>Acesso 24h/7 dias</li>
+</ul>
+<a class="btn-ghost-orange" href="#" style="display:block; text-align:center;">Escolher Plano</a>
+</div>
+</div>
+</section>
+<!-- FOOTER -->
+<footer id="contato">
+<div class="footer-top">
+<div>
+<a class="logo" href="#">Prime <span>Athletics</span></a>
+<p class="footer-brand-desc">O clube de fitness premium onde performance encontra excelência. Transforme seu corpo, eleve seu padrão.</p>
+</div>
+<div class="footer-col">
+<h4>Modalidades</h4>
+<ul>
+<li><a href="#">Musculação</a></li>
+<li><a href="#">HIIT</a></li>
+<li><a href="#">CrossTraining</a></li>
+<li><a href="#">Personal</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4>Clube</h4>
+<ul>
+<li><a href="#">Sobre Nós</a></li>
+<li><a href="#">Equipe</a></li>
+<li><a href="#">Infraestrutura</a></li>
+<li><a href="#">Blog</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4>Contato</h4>
+<ul>
+<li><a href="#">Rua das Esportistas, 800</a></li>
+<li><a href="#">(11) 3200-5500</a></li>
+<li><a href="#">info@primeathletics.com.br</a></li>
+<li><a href="#">Seg-Dom: 5h30 às 23h</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+<p>© 2024 Prime Athletics Club. Todos os direitos reservados.</p>
+<p>Projeto desenvolvido por <span>Júlia Ágata de Assis</span></p>
+</div>
+</footer>
+<script>
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 60));
 
@@ -802,7 +793,6 @@
       document.querySelector('.hero-bg').style.transform = `translateY(${window.scrollY * 0.4}px)`;
     });
   </script>
-
 <script>
 document.addEventListener("DOMContentLoaded", function() {
   const images = document.querySelectorAll('img');
@@ -815,7 +805,6 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 </script>
-
 <script>
 document.addEventListener("DOMContentLoaded", function() {
   const images = document.querySelectorAll('img');
@@ -828,7 +817,6 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 </script>
-
 <script>
 document.addEventListener("DOMContentLoaded", function() {
   const images = document.querySelectorAll('img');
@@ -841,7 +829,6 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 </script>
-
 <script>
 document.addEventListener("DOMContentLoaded", function() {
   const images = document.querySelectorAll('img');
@@ -854,7 +841,6 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 </script>
-
 <script>
 document.addEventListener("DOMContentLoaded", function() {
   const images = document.querySelectorAll('img');
